@@ -19,21 +19,20 @@ class make_script:
 
     def run_job(self):
         popen_command = self.environs.popen_command
-        for script in self.bash_scripts:
-            if self.debug==False:
-                # Open a pipe to the command.
-                proc = Popen(popen_command, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, close_fds=True)
-                if (sys.version_info > (3, 0)):
-                    proc.stdin.write(script.encode('utf-8'))
-                    out, err = proc.communicate()
-                else:
-                    proc.stdin.write(script)
-                    out, err = proc.communicate()
-            # Print your job and the system response to the screen as it's submitted
-            print(script)
-            if self.debug==False:
-                print(out)
-                time.sleep(0.1)
+        if self.debug==False:
+            # Open a pipe to the command.
+            proc = Popen(popen_command, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, close_fds=True)
+            if (sys.version_info > (3, 0)):
+                proc.stdin.write(self.bash_script.encode('utf-8'))
+                out, err = proc.communicate()
+            else:
+                proc.stdin.write(self.bash_script)
+                out, err = proc.communicate()
+        # Print your job and the system response to the screen as it's submitted
+        print(self.bash_script)
+        if self.debug==False:
+            print(out)
+            time.sleep(0.1)
 
 class environs:
     def __init__(self, *args, **kwargs):
