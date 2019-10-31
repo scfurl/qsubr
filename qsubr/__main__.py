@@ -2,13 +2,12 @@ import sys
 import os
 from subprocess import Popen, PIPE
 import argparse
+import getpass
 from . import qsubr
 
 def run_qsubr(args=None):
-    if args is None:
-        args = sys.argv[1:]
     parser = argparse.ArgumentParser('The missing qsub command')
-    parser.add_argument('script', type=str, help='A quotes string of commands')
+    parser.add_argument('script', type=str, help='A quoted string of commands')
     parser.add_argument('--cluster', '-c', type=str, default="PBS", help='cluster settings')
     parser.add_argument('--account', '-A', type=str, default="sfurla", help='account_string')
     parser.add_argument('--name', '-N', type=str, default="qsubr_job", help='name')
