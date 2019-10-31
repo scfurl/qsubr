@@ -3,7 +3,7 @@ import os
 from subprocess import Popen, PIPE
 import argparse
 import getpass
-from . import qsubr
+import qsubr
 
 def run_qsubr(args=None):
     parser = argparse.ArgumentParser('The missing qsub command')
