@@ -12,6 +12,7 @@ ENVIRONS_JSON = os.path.join(_ROOT, 'data', 'environs.json')
 class make_script:
     def __init__(self, *args, **kwargs):
         self.environs = environs(command = kwargs.get('command'), cluster = kwargs.get('cluster'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
+        self.bash_script = self.environs.generate_job(command = kwargs.get('command'))
     def __call__():
         pass
 
@@ -45,12 +46,13 @@ class environs:
         self.ram = kwargs.get('mem')
 
 
+
     def load_environs(self, environs_file):
         with open(environs_file, "r") as read_file:
             data = json.load(read_file)
         return data
 
-    def generate_job(self, commands, job):
+    def generate_job(self, commands):
         bash_script = self.assemble_script(   LOG_FILE = self.log, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
