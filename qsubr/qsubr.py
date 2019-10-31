@@ -4,6 +4,7 @@ import os
 from subprocess import Popen, PIPE
 import argparse
 import json
+import re
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 #_ROOT = '/Users/sfurla/Box Sync/PI_FurlanS/computation/develop/qsubr/qsubr'
