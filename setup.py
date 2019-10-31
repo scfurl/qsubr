@@ -22,7 +22,7 @@ with open("README.md", "r") as fh:
     ],
     python_requires='>=2.5',
     entry_points={'console_scripts': [
-        'qsubr = __main__:run_qsubr',
+        'qsubr = qsubr.__main__:run_qsubr',
     ]},
     )
 
