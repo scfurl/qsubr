@@ -1,4 +1,4 @@
-import qsubr
+from . import qsubr
 import sys
 import os
 from subprocess import Popen, PIPE
