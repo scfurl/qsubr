@@ -17,5 +17,5 @@ def run_qsubr(args=None):
     parser.add_argument('--log', '-l', type=str, default="log_out", help='log filename')
     parser.add_argument('--debug', '-d', type=str, action='store_true', help='To print commands (For testing flow). OPTIONAL')
     args = parser.parse_args()
-    qsubr_job = qsubr.qsubr(script = args.script, threads = args.threads, nodes = args.nodes, mem = args.mem, name = args.name, debug=args.debug, cluster=args.cluster, log=args.log, user=args.account)
+    qsubr_job = qsubr.make_script(script = args.script, threads = args.threads, nodes = args.nodes, mem = args.mem, name = args.name, debug=args.debug, cluster=args.cluster, log=args.log, user=args.account)
     qsubr.run_job()
