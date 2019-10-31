@@ -7,7 +7,7 @@ import getpass
 
 def run_qsubr(args=None):
     parser = argparse.ArgumentParser('The missing qsub command')
-    parser.add_argument('script', type=str, help='A quoted string of commands')
+    parser.add_argument('command', type=str, help='A quoted string of commands')
     parser.add_argument('--cluster', '-c', type=str, default="PBS", help='cluster settings')
     parser.add_argument('--account', '-A', type=str, default="sfurla", help='account_string')
     parser.add_argument('--name', '-N', type=str, default="qsubr_job", help='name')
@@ -21,5 +21,5 @@ def run_qsubr(args=None):
     args = parser.parse_args(call.split(" ")[1:])
     """
     args = parser.parse_args()
-    qsubr_job = qsubr.make_script(script = args.script, threads = args.threads, nodes = args.nodes, mem = args.mem, name = args.name, debug=args.debug, cluster=args.cluster, log=args.log, user=args.account)
+    qsubr_job = qsubr.make_script(command = args.command, threads = args.threads, nodes = args.nodes, mem = args.mem, name = args.name, debug=args.debug, cluster=args.cluster, log=args.log, user=args.account)
     qsubr_job.run_job()

@@ -6,6 +6,7 @@ import argparse
 import json
 import re
 import sys
+import time
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 #_ROOT = '/Users/sfurla/Box Sync/PI_FurlanS/computation/develop/qsubr/qsubr'
@@ -59,7 +60,7 @@ class environs:
         bash_script = self.assemble_script(   LOG_FILE = self.log, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
-                                    COMMAND = command,
+                                    COMMAND = self.command,
                                     RAM = self.ram,
                                     THREADS = self.threads,
                                     USER = self.user)
