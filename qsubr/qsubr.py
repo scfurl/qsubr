@@ -83,6 +83,6 @@ class environs:
             else:
                 string=lines_unparsed[i]
                 for j in range(len(values_to_insert[i])):
-                    string = re.sub("<--{0}-->".format(j), fn_args.get(values_to_insert[i][j]), string)
+                    string = re.sub("<--{0}-->".format(j), str(fn_args.get(values_to_insert[i][j])), string)
                 lines_parsed.append(string)
         return "\n".join(lines_parsed)
