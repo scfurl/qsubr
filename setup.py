@@ -22,7 +22,7 @@ with open("README.md", "r") as fh:
     ],
     python_requires='>=2.5',
     entry_points={'console_scripts': [
-        'qsubr = qsubr.qsubr:run_qsubr',
+        'qsubr = __main__:run_qsubr',
     ]},
     )
 
@@ -41,7 +41,7 @@ module load python
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 pipx install --include-deps --pip-args '--trusted-host pypi.org --trusted-host files.pythonhosted.org' qsubr
-pipx install --spec git+https://github.com/scfurl/qsubr@dev --include-deps qsubr --pip-args '--trusted-host pypi.org --trusted-host files.pythonhosted.org'
+pipx install --spec git+https://github.com/scfurl/qsubr@master --include-deps qsubr --pip-args '--trusted-host pypi.org --trusted-host files.pythonhosted.org'
 
 
 **At the FHCRC do the following...**
