@@ -3,7 +3,7 @@
 import os
 from subprocess import Popen, PIPE
 import argparse
-import qsubr
+from . import qsubr
 
 def run_qsubr(args=None):
     if args is None:
