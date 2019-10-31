@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
     setuptools.setup(
     name="qsubr",
-    version="0.1",
+    version="0.1.1",
     author="Scott Furlan",
     author_email="scottfurlan@gmail.com",
     description="A python wrapper for a quick qsub command",
@@ -32,7 +32,7 @@ cd ~/Box\ Sync/PI_FurlanS/computation/develop/qsubr/
 rm dist/*
 python3 setup.py sdist bdist_wheel
 python3 -m twine upload dist/*
-
+scfurl
 
 
 **At SCRI do the following**
