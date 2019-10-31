@@ -60,7 +60,7 @@ class environs:
         bash_script = self.assemble_script(   LOG_FILE = self.log, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
-                                    COMMAND = self.command,
+                                    COMMAND = command,
                                     RAM = self.ram,
                                     THREADS = self.threads,
                                     USER = self.user)
