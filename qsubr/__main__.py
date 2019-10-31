@@ -1,4 +1,4 @@
-import qsubr
+import qsubr as qsubr
 import sys
 import os
 from subprocess import Popen, PIPE
@@ -15,7 +15,11 @@ def run_qsubr(args=None):
     parser.add_argument('--nodes', '-n', type=int, default=1, help='nodes')
     parser.add_argument('--threads', '-t', type=int, default=4, help='threads')
     parser.add_argument('--log', '-l', type=str, default="log_out", help='log filename')
-    parser.add_argument('--debug', '-d', type=str, action='store_true', help='To print commands (For testing flow). OPTIONAL')
+    parser.add_argument('--debug', '-d', action='store_true', help='To print commands (For testing flow). OPTIONAL')
+    """
+    call = 'qsubr "command"'
+    args = parser.parse_args(call.split(" ")[1:])
+    """
     args = parser.parse_args()
     qsubr_job = qsubr.make_script(script = args.script, threads = args.threads, nodes = args.nodes, mem = args.mem, name = args.name, debug=args.debug, cluster=args.cluster, log=args.log, user=args.account)
     qsubr_job.run_job()

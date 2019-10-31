@@ -3,8 +3,10 @@
 import os
 from subprocess import Popen, PIPE
 import argparse
+import json
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
+#_ROOT = '/Users/sfurla/Box Sync/PI_FurlanS/computation/develop/qsubr/qsubr'
 ENVIRONS_JSON = os.path.join(_ROOT, 'data', 'environs.json')
 
 class make_script:
@@ -49,12 +51,12 @@ class environs:
         return data
 
     def generate_job(self, commands, job):
-            bash_script = self.assemble_script(   LOG_FILE = self.log, \
+        bash_script = self.assemble_script(   LOG_FILE = self.log, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
                                     COMMAND = commands[i][1],
                                     RAM = self.ram,
-                                    THREADS = self,threads,
+                                    THREADS = self.threads,
                                     USER = self.user)
         return bash_script
 
