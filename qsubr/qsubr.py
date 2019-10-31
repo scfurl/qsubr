@@ -7,7 +7,7 @@ import argparse
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 ENVIRONS_JSON = os.path.join(_ROOT, 'data', 'environs.json')
 
-class SampleFactory:
+class qsubr:
     def __init__(self, *args, **kwargs):
         self.environs = environs(command = kwargs.get('command'), cluster = kwargs.get('cluster'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
     def __call__():
