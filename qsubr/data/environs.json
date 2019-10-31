@@ -8,4 +8,5 @@
             "4" : ["#PBS -A <--0-->\ncd $PBS_O_WORKDIR\n","USER"],
             "5" : ["{<--0-->}", "COMMAND"]
         }
+	}
 }
