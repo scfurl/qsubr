@@ -52,11 +52,11 @@ class environs:
             data = json.load(read_file)
         return data
 
-    def generate_job(self, commands):
+    def generate_job(self, command):
         bash_script = self.assemble_script(   LOG_FILE = self.log, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
-                                    COMMAND = commands[i][1],
+                                    COMMAND = commands,
                                     RAM = self.ram,
                                     THREADS = self.threads,
                                     USER = self.user)
