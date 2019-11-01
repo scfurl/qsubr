@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, check_call
 import argparse
 import json
 import re
