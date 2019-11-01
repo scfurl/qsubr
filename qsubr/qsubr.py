@@ -21,21 +21,16 @@ class make_script:
         pass
 
     def run_job(self):
-        popen_command = self.environs.popen_command
+        f = open(" tempscript.sh", "w")
+        f.write(self.bash_script))
+        f.close()
+        popen_command = self.environs.popen_command+" tempscript.sh"
         if self.debug==False:
-            # Open a pipe to the command.
-            proc = Popen(popen_command, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, close_fds=True)
-            if (sys.version_info > (3, 0)):
-                proc.stdin.write(self.bash_script.encode('utf-8'))
-                out, err = proc.communicate()
-            else:
-                proc.stdin.write(self.bash_script)
-                out, err = proc.communicate()
-        # Print your job and the system response to the screen as it's submitted
-        print(self.bash_script)
-        if self.debug==False:
-            print(out)
+            subprocess.check_call(popen_command, stdout=self.environs.log, stderr=self.environs.log, shell=True)
+            print(self.bash_script)
             time.sleep(0.1)
+        if self.debug==True:
+            print(self.bash_script)
 
 class environs:
     def __init__(self, *args, **kwargs):
