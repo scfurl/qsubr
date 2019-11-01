@@ -21,14 +21,17 @@ class make_script:
         pass
 
     def run_job(self):
-        f = open("tempscript.sh", "w")
-        f.write(self.bash_script)
-        f.close()
+        log = open(self.environs.log, "w"),
         popen_command = self.environs.popen_command+" tempscript.sh"
         if self.debug==False:
-            check_call(popen_command, stdout=open(self.environs.log, "r"), stderr=open(self.environs.log, "r"), shell=True)
+            f = open("tempscript.sh", "w")
+            f.write(self.bash_script)
+            f.close()
+            check_call(popen_command, stdout=log, stderr=log, shell=True)
             print(self.bash_script)
             time.sleep(0.1)
+            log.close()
+            #os.remove("tempscript.sh")
         if self.debug==True:
             print(self.bash_script)
 
