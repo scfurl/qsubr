@@ -21,10 +21,10 @@ class make_script:
         pass
 
     def run_job(self):
-        f = open(" tempscript.sh", "w")
+        f = open("tempscript.sh", "w")
         f.write(self.bash_script)
         f.close()
-        popen_command = self.environs.popen_command+"tempscript.sh"
+        popen_command = self.environs.popen_command+" tempscript.sh"
         if self.debug==False:
             subprocess.check_call(popen_command, stdout=self.environs.log, stderr=self.environs.log, shell=True)
             print(self.bash_script)
