@@ -26,7 +26,7 @@ class make_script:
         f.close()
         popen_command = self.environs.popen_command+" tempscript.sh"
         if self.debug==False:
-            subprocess.check_call(popen_command, stdout=self.environs.log, stderr=self.environs.log, shell=True)
+            check_call(popen_command, stdout=self.environs.log, stderr=self.environs.log, shell=True)
             print(self.bash_script)
             time.sleep(0.1)
         if self.debug==True:
