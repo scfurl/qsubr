@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os
-from subprocess import Popen, PIPE, check_call
+from subprocess import Popen, PIPE
 import argparse
 import json
 import re
@@ -21,13 +21,15 @@ class make_script:
         pass
 
     def run_job(self):
-        log = open(self.environs.log, "w"),
-        popen_command = self.environs.popen_command+" tempscript.sh"
+        popen_command = [self.environs.popen_command, "tempscript.sh"]
         if self.debug==False:
+            log = open(self.environs.log, "w"),
             f = open("tempscript.sh", "w")
             f.write(self.bash_script)
             f.close()
-            check_call(popen_command, stdout=log, stderr=log, shell=True)
+            with Popen(popen_command, stdout=PIPE) as proc:
+                log.write(proc.stdout.read())
+            run(popen_command, stdout=log, stderr=log, check=True)
             print(self.bash_script)
             time.sleep(0.1)
             log.close()
