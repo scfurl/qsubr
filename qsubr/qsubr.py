@@ -28,8 +28,7 @@ class make_script:
             f.write(self.bash_script)
             f.close()
             with Popen(popen_command, stdout=PIPE) as proc:
-                log.write(proc.stdout.read())
-            run(popen_command, stdout=log, stderr=log, check=True)
+                print(proc.stdout.read())
             print(self.bash_script)
             time.sleep(0.1)
             log.close()
