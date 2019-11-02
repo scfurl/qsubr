@@ -23,7 +23,7 @@ class make_script:
     def run_job(self):
         popen_command = [self.environs.popen_command, "tempscript.sh"]
         if self.debug==False:
-            log = open(self.environs.log, "w"),
+            #log = open(self.environs.log, "w"),
             f = open("tempscript.sh", "w")
             f.write(self.bash_script)
             f.close()
@@ -31,7 +31,7 @@ class make_script:
                 print(proc.stdout.read())
             print(self.bash_script)
             time.sleep(0.1)
-            log.close()
+            #log.close()
             #os.remove("tempscript.sh")
         if self.debug==True:
             print(self.bash_script)
