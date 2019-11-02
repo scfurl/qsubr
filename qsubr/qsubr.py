@@ -27,7 +27,7 @@ class make_script:
             f = open("tempscript.sh", "w")
             f.write(self.bash_script)
             f.close()
-            with Popen(popen_command, stdout=PIPE) as proc:
+            with Popen(popen_command, stdout=PIPE, shell=True) as proc:
                 print(proc.stdout.read())
             print(self.bash_script)
             time.sleep(0.1)
