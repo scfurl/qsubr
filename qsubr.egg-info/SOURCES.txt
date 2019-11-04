@@ -1,6 +1,9 @@
 MANIFEST.in
 README.md
 setup.py
+qsubr/__init__.py
+qsubr/__main__.py
+qsubr/qsubr.py
 qsubr.egg-info/PKG-INFO
 qsubr.egg-info/SOURCES.txt
 qsubr.egg-info/dependency_links.txt
