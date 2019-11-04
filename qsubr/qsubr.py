@@ -15,7 +15,7 @@ ENVIRONS_JSON = os.path.join(_ROOT, 'data', 'environs.json')
 class make_script:
     def __init__(self, *args, **kwargs):
         self.debug = kwargs.get('debug')
-        self.environs = environs(command = kwargs.get('command'), cluster = kwargs.get('cluster'), nodes = kwargs.get('nodes'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
+        self.environs = environs(command = kwargs.get('command'), queue = kwargs.get('queue'), cluster = kwargs.get('cluster'), nodes = kwargs.get('nodes'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
         self.bash_script = self.environs.generate_job(command = kwargs.get('command'))
     def __call__():
         pass
@@ -49,6 +49,7 @@ class make_script:
 class environs:
     def __init__(self, *args, **kwargs):
         self.cluster = kwargs.get('cluster')
+        self.queue = kwargs.get('queue')
         self.user = kwargs.get('user')
         self.log = kwargs.get('log')
         self.name = kwargs.get('name')
@@ -67,6 +68,7 @@ class environs:
 
     def generate_job(self, command):
         bash_script = self.assemble_script(   LOG_FILE = self.log, \
+                                    QUEUE = self.queue, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
                                     COMMAND = command,
