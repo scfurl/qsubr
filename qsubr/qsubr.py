@@ -22,6 +22,7 @@ class make_script:
 
     def run_job(self):
         popen_command = [self.environs.popen_command, "tempscript.sh"]
+        print(popen_command)
         if self.debug==False:
             #log = open(self.environs.log, "w"),
             f = open("tempscript.sh", "w")
