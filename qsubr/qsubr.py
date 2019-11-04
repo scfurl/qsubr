@@ -21,16 +21,25 @@ class make_script:
         pass
 
     def run_job(self):
-        popen_command = [self.environs.popen_command, "tempscript.sh"]
+        #popen_command = [self.environs.popen_command, "tempscript.sh"]
+        popen_command = self.environs.popen_command
         print(popen_command)
         if self.debug==False:
             #log = open(self.environs.log, "w"),
-            f = open("tempscript.sh", "w")
-            f.write(self.bash_script)
-            f.close()
-            with Popen(popen_command, shell=True) as proc:
-                print(proc.stdout.read())
+            # f = open("tempscript.sh", "w")
+            # f.write(self.bash_script)
+            # f.close()
+            proc = Popen(popen_command, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, close_fds=True)
+            if (sys.version_info > (3, 0)):
+                proc.stdin.write(self.bash_script.encode('utf-8'))
+                out, err = proc.communicate()
+            else:
+                proc.stdin.write(self.bash_script)
+                out, err = proc.communicate()
+            # with Popen(popen_command, shell=True) as proc:
+            #     print(proc.stdout.read())
             print(self.bash_script)
+            print(out)
             time.sleep(0.1)
             #log.close()
             #os.remove("tempscript.sh")
