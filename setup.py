@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
     setuptools.setup(
     name="qsubr",
-    version="0.1.1",
+    version="0.2",
     author="Scott Furlan",
     author_email="scottfurlan@gmail.com",
     description="A python wrapper for a quick qsub command",
