@@ -15,7 +15,7 @@
         "script_lines": {
             "1" : ["#!/bin/bash\n#SBATCH --output=outtmp\n#SBATCH --error=errtmp", ""],
             "2" : ["#SBATCH --job-name=<--0-->", "JOB_NAME"],
-            "3" : ["#SBATCH --ntasks=<--0-->\n#SBATCH --cpus-per-task=<--0-->","NODES|THREADS"],
+            "3" : ["#SBATCH --ntasks=<--0-->\n#SBATCH --cpus-per-task=<--1-->","NODES|THREADS"],
             "4" : ["#SBATCH --partition=<--0-->","PARTITION"],
             "5" : ["#SBATCH --mem-per-cpu=<--0-->000","RAM"],
             "6" : ["#SBATCH --clusters=<--0-->","CLUSTER"],

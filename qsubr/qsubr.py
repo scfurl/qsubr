@@ -15,7 +15,7 @@ ENVIRONS_JSON = os.path.join(_ROOT, 'data', 'environs.json')
 class make_script:
     def __init__(self, *args, **kwargs):
         self.debug = kwargs.get('debug')
-        self.environs = environs(command = kwargs.get('command'), environment = kwargs.get('environment'), cluster = kwargs.get('cluster'), nodes = kwargs.get('nodes'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
+        self.environs = environs(command = kwargs.get('command'), partition = kwargs.get('partition'), environment = kwargs.get('environment'), cluster = kwargs.get('cluster'), nodes = kwargs.get('nodes'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
         self.bash_script = self.environs.generate_job(command = kwargs.get('command'))
     def __call__():
         pass
@@ -55,7 +55,7 @@ class environs:
         self.partition = kwargs.get('partition')
         self.cluster = kwargs.get('cluster')
         self.name = kwargs.get('name')
-        self.environs_data = self.load_environs(ENVIRONS_JSON).get(self.cluster)
+        self.environs_data = self.load_environs(ENVIRONS_JSON).get(self.environment)
         self.popen_command = self.environs_data["popen"]
         self.threads = kwargs.get('threads')
         self.ram = kwargs.get('mem')

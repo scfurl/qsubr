@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: qsubr
-Version: 0.2
+Version: 0.3
 Summary: A python wrapper for a quick qsub command
 Home-page: https://github.com/scfurl/qsubr.git
 Author: Scott Furlan
