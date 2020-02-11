@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
     setuptools.setup(
     name="qsubr",
-    version="0.2",
+    version="0.3",
     author="Scott Furlan",
     author_email="scottfurlan@gmail.com",
     description="A python wrapper for a quick qsub command",
@@ -28,7 +28,7 @@ with open("README.md", "r") as fh:
 
 
 """
-cd ~/Box\ Sync/PI_FurlanS/computation/develop/qsubr/
+cd ~/OneDrive\ -\ Fred\ Hutchinson\ Cancer\ Research\ Center/computation/develop/qsubr/
 rm dist/*
 python3 setup.py sdist bdist_wheel
 python3 -m twine upload dist/*

@@ -15,7 +15,7 @@ ENVIRONS_JSON = os.path.join(_ROOT, 'data', 'environs.json')
 class make_script:
     def __init__(self, *args, **kwargs):
         self.debug = kwargs.get('debug')
-        self.environs = environs(command = kwargs.get('command'), queue = kwargs.get('queue'), cluster = kwargs.get('cluster'), nodes = kwargs.get('nodes'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
+        self.environs = environs(command = kwargs.get('command'), environment = kwargs.get('environment'), cluster = kwargs.get('cluster'), nodes = kwargs.get('nodes'), name = kwargs.get('name'), user = kwargs.get('user'), log = kwargs.get('log'), threads = kwargs.get('threads'), mem = kwargs.get('mem'))
         self.bash_script = self.environs.generate_job(command = kwargs.get('command'))
     def __call__():
         pass
@@ -49,9 +49,11 @@ class make_script:
 class environs:
     def __init__(self, *args, **kwargs):
         self.cluster = kwargs.get('cluster')
-        self.queue = kwargs.get('queue')
+        self.environment = kwargs.get('environment')
         self.user = kwargs.get('user')
         self.log = kwargs.get('log')
+        self.partition = kwargs.get('partition')
+        self.cluster = kwargs.get('cluster')
         self.name = kwargs.get('name')
         self.environs_data = self.load_environs(ENVIRONS_JSON).get(self.cluster)
         self.popen_command = self.environs_data["popen"]
@@ -68,7 +70,9 @@ class environs:
 
     def generate_job(self, command):
         bash_script = self.assemble_script(   LOG_FILE = self.log, \
-                                    QUEUE = self.queue, \
+                                    CLUSTER = self.cluster, \
+                                    PARTITION = self.partition, \
+                                    ENVIRONMENT = self.environment, \
                                     JOB_NAME = self.name, \
                                     NODES = self.nodes, \
                                     COMMAND = command,
